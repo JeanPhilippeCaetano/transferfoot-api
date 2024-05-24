@@ -37,7 +37,7 @@ To set up and run the application using Docker, follow these steps:
 | `/players/<id>`   | GET    | Get details of a specific player by its ID                    |
 | `/transfer`      | POST   | Transfer a player from one team to another                    |
 
-### Example Usage
+### Example Usage (with Linux or Mac OS)
 
 #### Create a New Team
 
