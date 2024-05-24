@@ -35,7 +35,7 @@ To set up and run the application using Docker, follow these steps:
 | `/players`        | POST   | Create a new player                                           |
 | `/players`        | GET    | List all existing players                                     |
 | `/players/<id>`   | GET    | Get details of a specific player by its ID                    |
-| `/transfers`      | POST   | Transfer a player from one team to another                    |
+| `/transfer`      | POST   | Transfer a player from one team to another                    |
 
 ### Example Usage
 
@@ -91,7 +91,7 @@ curl -X GET http://localhost:5000/players/1
 #### Transfer a Player
 
 ```sh
-curl -X POST http://localhost:5000/transfers -H "Content-Type: application/json" -d '{
+curl -X POST http://localhost:5000/transfer -H "Content-Type: application/json" -d '{
     "team_id" : 1,
     "player_id" : 1,
     "transfer_date" : "2024-05-24",
