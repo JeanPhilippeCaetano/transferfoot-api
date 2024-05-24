@@ -31,8 +31,36 @@ def create_app():
         except Exception as e:
             return jsonify({'error': str(e)}), 400
 
-    return app
+    @app.route('/teams', methods=['GET'])
+    def get_teams():
+        teams = Team.query.all()
+        return jsonify([{
+            'team_id': team.team_id,
+            'name': team.name,
+            'city': team.city,
+            'country': team.country,
+            'creation_date': team.creation_date,
+            'created_at': team.created_at,
+            'updated_at': team.updated_at
+        } for team in teams])
 
+    @app.route('/teams/<int:team_id>', methods=['GET'])
+    def get_team(team_id):
+        team = Team.query.get(team_id)
+        if team:
+            return jsonify({
+                'team_id': team.team_id,
+                'name': team.name,
+                'city': team.city,
+                'country': team.country,
+                'creation_date': team.creation_date,
+                'created_at': team.created_at,
+                'updated_at': team.updated_at
+            })
+        else:
+            return jsonify({'message': 'Team not found'}), 404
+
+    return app
 
 if __name__ == '__main__':
     app = create_app()
