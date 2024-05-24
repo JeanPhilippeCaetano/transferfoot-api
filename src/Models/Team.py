@@ -1,6 +1,8 @@
 from datetime import datetime
 
 from src.Models import db
+from src.Models import Player
+from src.Models import Transfer
 
 
 class Team(db.Model):
@@ -13,3 +15,6 @@ class Team(db.Model):
     creation_date = db.Column(db.Date, nullable=False, default=datetime.utcnow)
     created_at = db.Column(db.Date, nullable=False, default=datetime.utcnow)
     updated_at = db.Column(db.Date, nullable=False, default=datetime.utcnow)
+
+    players = db.relationship('Player', back_populates='team', lazy='dynamic')
+    transfers = db.relationship('Transfer', back_populates='team', lazy='dynamic')
